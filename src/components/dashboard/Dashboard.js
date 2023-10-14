@@ -9,7 +9,9 @@ function Dashboard(props) {
         <Link to="/create">
           <button>Create Post</button>
         </Link>
-        <button>Browse</button>
+        <Link to="/browse">
+          <button> Browse</button>
+        </Link>
         <div>
           <h1>Profile</h1>
           <h2>{user.firstName + " " + user.lastName}</h2>

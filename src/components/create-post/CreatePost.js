@@ -2,6 +2,7 @@ import { useRef } from "react";
 import "./CreatePost.css";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../../firebase";
+import { useNavigate } from "react-router-dom";
 
 function CreatePost(props) {
   const titleRef = useRef();
@@ -10,6 +11,7 @@ function CreatePost(props) {
   const maxPostTimeRef = useRef();
   const linkRef = useRef();
   const descriptionRef = useRef();
+  const navigate = useNavigate();
 
   async function onSubmit() {
     const postId = crypto.randomUUID();
@@ -22,6 +24,7 @@ function CreatePost(props) {
       minPeople: minParticipantsRef.current.value,
       maxPostTime: maxPostTimeRef.current.value,
       itemLink: linkRef.current.value,
+      peopleJoined: [],
     });
     titleRef.current.value = "";
     costRef.current.value = "";
@@ -29,6 +32,7 @@ function CreatePost(props) {
     maxPostTimeRef.current.value = "";
     linkRef.current.value = "";
     descriptionRef.current.value = "";
+    navigate("/success");
   }
 
   return (
