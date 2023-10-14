@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 import Post from "./components/post/Post";
-
+import LandingPage from "./components/landing-page/LandingPage";
 function App() {
   let post1 = {
     postTitle: "Need paper towel",
@@ -26,9 +26,10 @@ function App() {
   posts.push(post2);
   return (
     <div className="App">
-      {posts.map(function (post) {
+      {/* {posts.map(function (post) {
         return <Post post={post}></Post>;
-      })}
+      })} */}
+      <LandingPage></LandingPage>
     </div>
   );
 }
