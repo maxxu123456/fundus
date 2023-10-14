@@ -5,10 +5,14 @@ import LandingPage from "./components/landing-page/LandingPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Signup from "./components/signup/Signup";
 import Login from "./components/login/Login";
+import Dashboard from "./components/dashboard/Dashboard";
+import CreatePost from "./components/create-post/CreatePost";
 const router = createBrowserRouter([
   { path: "/", element: <LandingPage></LandingPage> },
   { path: "/signup", element: <Signup></Signup> },
   { path: "/login", element: <Login></Login> },
+  { path: "/dashboard", element: <Dashboard></Dashboard> },
+  { path: "/create", element: <CreatePost></CreatePost> },
 ]);
 function App() {
   let post1 = {
@@ -19,7 +23,6 @@ function App() {
     minPeople: 2,
     //hours
     maxPostTime: 12,
-    maxDeliveryTime: 13,
   };
   let post2 = {
     postTitle: "Microwave",
@@ -27,7 +30,6 @@ function App() {
     cost: 150.0,
     minPeople: 10,
     maxPostTime: 23,
-    maxDeliveryTime: 22,
   };
   let posts = [];
   posts.push(post1);

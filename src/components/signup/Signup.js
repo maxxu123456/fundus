@@ -1,53 +1,58 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import "./Signup.css";
-
+import { collection, addDoc, setDoc, doc } from "firebase/firestore";
+import { db } from "../../firebase";
+import { useNavigate } from "react-router-dom";
 function Signup(props) {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [location, setLocation] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
-  const firstNameHandler = (event) => {
-    setFirstName(event.target.value);
-  };
-  const lastNameHandler = (event) => {
-    setLastName(event.target.value);
-  };
-  const locationHandler = (event) => {
-    setLocation(event.target.value);
-  };
-  const emailHandler = (event) => {
-    setEmail(event.target.value);
-  };
-  const passwordHandler = (event) => {
-    setPassword(event.target.value);
-  };
+  const firstNameRef = useRef();
+  const lastNameRef = useRef();
+  const locationRef = useRef();
+  const emailRef = useRef();
+  const passwordRef = useRef();
+  async function onSubmit(event) {
+    await setDoc(doc(db, "users", emailRef.current.value), {
+      firstName: firstNameRef.current.value,
+      lastName: lastNameRef.current.value,
+      location: locationRef.current.value,
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    });
+
+    firstNameRef.current.value = "";
+    lastNameRef.current.value = "";
+    locationRef.current.value = "";
+    emailRef.current.value = "";
+    passwordRef.current.value = "";
+
+    navigate("/login");
+  }
 
   return (
     <div>
       <div>
         <label>First Name: </label>
-        <input type="text" onChange={firstNameHandler}></input>
+        <input type="text" ref={firstNameRef}></input>
       </div>
       <div>
         <label>Last Name: </label>
-        <input type="text" onChange={lastNameHandler}></input>
+        <input type="text" ref={lastNameRef}></input>
       </div>
       <div>
         <label>Location: </label>
-        <input type="text" onChange={locationHandler}></input>
+        <input type="text" ref={locationRef}></input>
       </div>
       <div>
         <label>Email: </label>
-        <input type="text" onChange={emailHandler}></input>
+        <input type="text" ref={emailRef}></input>
       </div>
       <div>
         <label>Create Password: </label>
-        <input type="text" onChange={passwordHandler}></input>
+        <input type="text" ref={passwordRef}></input>
       </div>
 
-      <button>Create Account</button>
+      <button onClick={onSubmit}>Create Account</button>
     </div>
   );
 }

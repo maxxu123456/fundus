@@ -7,10 +7,7 @@ function Post(props) {
       <p>{"Cost: " + props.post.cost}</p>
       <p>{"Minimum Number of People Required: " + props.post.minPeople}</p>
       <p>{"Maximum Amount for people to Pledge " + props.post.maxPostTime}</p>
-      <p>
-        {"Max Amount of Poster to deliver after enough people pledge " +
-          props.post.maxDeliveryTime}
-      </p>
+      <p>{"Item Link " + props.post.itemLink}</p>
     </div>
   );
 }
