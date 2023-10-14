@@ -8,6 +8,10 @@
     src: local('Avenir-Light.ttf') format('truetype');
 }
 
+.h1 {
+    margin-bottom: 0px;
+}
+
 .input {
     width: 350px;
     height: 50px;

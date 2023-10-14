@@ -12,7 +12,7 @@ function Login(props) {
 
     return (
         <div>
-            <h1>moneyPool</h1>
+            <h1 className={styles.h1}>moneyPool</h1>
             <div>
                 <input className={styles.input} type="text" placeholder="Email" ></input>
             </div>
