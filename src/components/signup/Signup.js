@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./Signup.css";
+import styles from "./Signup.module.css";
 
 function Signup(props) {
   const [firstName, setFirstName] = useState("");
@@ -26,28 +26,24 @@ function Signup(props) {
 
   return (
     <div>
+      <h2>Create your account</h2>
       <div>
-        <label>First Name: </label>
-        <input type="text" onChange={firstNameHandler}></input>
+        <input className={styles.input} type="text" placeholder="First Name" onChange={firstNameHandler}></input>
       </div>
       <div>
-        <label>Last Name: </label>
-        <input type="text" onChange={lastNameHandler}></input>
+        <input className={styles.input} type="text" placeholder="Last Name" onChange={lastNameHandler}></input>
       </div>
       <div>
-        <label>Location: </label>
-        <input type="text" onChange={locationHandler}></input>
+        <input className={styles.input} type="text" placeholder="Location" onChange={locationHandler}></input>
       </div>
       <div>
-        <label>Email: </label>
-        <input type="text" onChange={emailHandler}></input>
+        <input className={styles.input} type="text" placeholder="Email" onChange={emailHandler}></input>
       </div>
       <div>
-        <label>Create Password: </label>
-        <input type="text" onChange={passwordHandler}></input>
+        <input className={styles.input} type="password" placeholder="Create Password" onChange={passwordHandler}></input>
       </div>
 
-      <button>Create Account</button>
+      <button className={styles.button}>Create Account</button>
     </div>
   );
 }
