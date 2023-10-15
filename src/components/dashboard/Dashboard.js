@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./Dashboard.module.css";
-import plus from './images/plus.png';
-import magnify from './images/magnify.png';
+import plus from "./images/plus.png";
+import magnify from "./images/magnify.png";
 
 import { useEffect, useState } from "react";
 import { collection, getDoc, getDocs } from "firebase/firestore";
@@ -50,64 +50,66 @@ function Dashboard(props) {
 
         <div className={styles.titles}>
           <div className={styles.one}>
-
             <div className={styles.createBlock}>
               <p> Create Post</p>
               <Link to="/create">
-                <button className={styles.create}><img src={plus}></img></button>
+                <button className={styles.create}>
+                  <img src={plus}></img>
+                </button>
               </Link>
             </div>
 
             <div className={styles.browseBlock}>
               <p>Browse</p>
               <Link to="/browse">
-                <button className={styles.browse}><img src={magnify}></img></button>
+                <button className={styles.browse}>
+                  <img src={magnify}></img>
+                </button>
               </Link>
             </div>
-
           </div>
 
-            <div className={styles.three}>
-              <div className={styles.profileBlock}>
-                <p>Profile</p>
-                <div className={styles.profile}>
-                  <h2 className={styles.h2}>{user.firstName + " " + user.lastName}</h2>
-                  <h3 className={styles.subtext}>{user.email}</h3>
-                  <h3 className={styles.subtext}>{user.location}</h3>
-                </div>
+          <div className={styles.three}>
+            <div className={styles.profileBlock}>
+              <p>Profile</p>
+              <div className={styles.profile}>
+                <h2 className={styles.h2}>
+                  {user.firstName + " " + user.lastName}
+                </h2>
+                <h3 className={styles.subtext}>{user.email}</h3>
+                <h3 className={styles.subtext}>{user.location}</h3>
               </div>
             </div>
+          </div>
         </div>
 
-        <div className={styles.top}>
-
-
-        </div>
+        <div className={styles.top}></div>
 
         <div className={styles.bottom}>
           <p className={styles.bottomTitle}>My Pools</p>
 
-        <div>
-          {posts.map((post) => {
-            if (
-              post.peopleJoined.includes(user.email) ||
-              post.creator === user.email
-            ) {
-              return (
-                <div>
-                  <p>{post.postTitle}</p>
-                  <p>Contribute:</p>
-                  <p>
-                    {"$" +
-                      (post.peopleJoined.length / post.minPeople) * post.cost}
-                  </p>
-                  <p>of</p>
-                  <p>{"$" + post.cost}</p>
-                  <p>{determineJoinElement(post)}</p>
-                </div>
-              );
-            }
-          })}
+          <div>
+            {posts.map((post) => {
+              if (
+                post.peopleJoined.includes(user.email) ||
+                post.creator === user.email
+              ) {
+                return (
+                  <div>
+                    <p>{post.postTitle}</p>
+                    <p>Contribute:</p>
+                    <p>
+                      {"$" +
+                        (post.peopleJoined.length / post.minPeople) * post.cost}
+                    </p>
+                    <p>of</p>
+                    <p>{"$" + post.cost}</p>
+                    <p>{determineJoinElement(post)}</p>
+                  </div>
+                );
+              }
+            })}
+          </div>
         </div>
       </div>
     );
