@@ -13,16 +13,11 @@ function Dashboard(props) {
   function determineJoinElement(post) {
     let joinElement;
     const completed = post.peopleJoined.length === post.minPeople;
+    console.log(completed);
     if (completed) {
-      joinElement = <p>Completed</p>;
-    } else if (post.peopleJoined.includes(user.email)) {
-      joinElement = <p>Joined</p>;
+      joinElement = "Completed";
     } else {
-      joinElement = (
-        <Link to={"/join/" + post.postId}>
-          <button>Join</button>
-        </Link>
-      );
+      joinElement = "Joined";
     }
     return joinElement;
   }
@@ -90,17 +85,24 @@ function Dashboard(props) {
 
           <div>
             {posts.map((post) => {
-              if (
-                post.peopleJoined.includes(user.email) ||
-                post.creator === user.email
-              ) {
+              if (post.peopleJoined.includes(user.email)) {
                 return (
                   <div className={styles.section}>
                     <p className={styles.title}>{post.postTitle}</p>
                     <div className={styles.middle}>
-                    <p>{"Pay: $" + (post.cost / post.minPeople) + " / " + "$" + post.cost}</p>
+                      <p>
+                        {"Pay: $" +
+                          post.cost / post.minPeople +
+                          " / " +
+                          "$" +
+                          post.cost}
+                      </p>
                     </div>
-                    <p className={styles.right}>Joined</p>
+                    <p className={styles.right}>
+                      {post.peopleJoined.length === post.minPeople
+                        ? "Completed"
+                        : "Joined"}
+                    </p>
                   </div>
                 );
               }
