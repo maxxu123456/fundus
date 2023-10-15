@@ -1,7 +1,26 @@
 import styles from "./Post.module.css";
 import blueButton from "./Blue Cross.png";
 
+
+import { Link } from "react-router-dom";
 function Post(props) {
+  let user = localStorage.getItem("user");
+  user = JSON.parse(user);
+  let joinElement;
+  const completed = props.post.peopleJoined.length === props.post.minPeople;
+
+  if (completed) {
+    joinElement = <p>Completed</p>;
+  } else if (props.post.peopleJoined.includes(user.email)) {
+    joinElement = <p>Joined</p>;
+  } else {
+    joinElement = (
+      <Link to={"/join/" + props.post.postId}>
+        <button>Join</button>
+      </Link>
+    );
+  }
+
   return (
     <div>
       <div className={styles.topRow}>
@@ -25,6 +44,8 @@ function Post(props) {
           <button>Join</button>
         </div>
       </div>
+
+      {joinElement}
     </div>
   );
 }

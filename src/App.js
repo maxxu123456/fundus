@@ -7,12 +7,21 @@ import Signup from "./components/signup/Signup";
 import Login from "./components/login/Login";
 import Dashboard from "./components/dashboard/Dashboard";
 import CreatePost from "./components/create-post/CreatePost";
+import Success from "./components/success/Success";
+import Browse from "./components/browse/Browse";
+import Join from "./components/join/Join";
+import PaymentSuccess from "./components/payment-success/PaymentSuccess";
+
 const router = createBrowserRouter([
-  { path: "/", element: <LandingPage></LandingPage> },
-  { path: "/signup", element: <Signup></Signup> },
-  { path: "/login", element: <Login></Login> },
-  { path: "/dashboard", element: <Dashboard></Dashboard> },
-  { path: "/create", element: <CreatePost></CreatePost> },
+  { path: "/", element: <LandingPage /> },
+  { path: "/signup", element: <Signup /> },
+  { path: "/login", element: <Login /> },
+  { path: "/dashboard", element: <Dashboard /> },
+  { path: "/create", element: <CreatePost /> },
+  { path: "/success", element: <Success /> },
+  { path: "/browse", element: <Browse /> },
+  { path: "/join/:postId", element: <Join></Join> },
+  { path: "/payment-success", element: <PaymentSuccess></PaymentSuccess> },
 ]);
 function App() {
   let post1 = {

@@ -3,8 +3,41 @@ import styles from "./Dashboard.module.css";
 import plus from './images/plus.png';
 import magnify from './images/magnify.png';
 
+import { useEffect, useState } from "react";
+import { collection, getDoc, getDocs } from "firebase/firestore";
+import { db } from "../../firebase";
 function Dashboard(props) {
   let user = localStorage.getItem("user");
+  const [posts, setPosts] = useState([]);
+
+  function determineJoinElement(post) {
+    let joinElement;
+    const completed = post.peopleJoined.length === post.minPeople;
+    if (completed) {
+      joinElement = <p>Completed</p>;
+    } else if (post.peopleJoined.includes(user.email)) {
+      joinElement = <p>Joined</p>;
+    } else {
+      joinElement = (
+        <Link to={"/join/" + post.postId}>
+          <button>Join</button>
+        </Link>
+      );
+    }
+    return joinElement;
+  }
+  useEffect(() => {
+    async function loadData() {
+      const querySnapshot = await getDocs(collection(db, "posts"));
+      let newPosts = [];
+      querySnapshot.forEach((post) => {
+        newPosts.push(post.data());
+      });
+      setPosts(newPosts);
+      console.log(newPosts);
+    }
+    loadData();
+  }, []);
   if (user) {
     user = JSON.parse(user);
     let plusURL = plus;
@@ -27,7 +60,9 @@ function Dashboard(props) {
 
             <div className={styles.browseBlock}>
               <p>Browse</p>
-              <button className={styles.browse}><img src={magnify}></img></button>
+              <Link to="/browse">
+                <button className={styles.browse}><img src={magnify}></img></button>
+              </Link>
             </div>
 
           </div>
@@ -51,6 +86,28 @@ function Dashboard(props) {
 
         <div className={styles.bottom}>
           <p className={styles.bottomTitle}>My Pools</p>
+
+        <div>
+          {posts.map((post) => {
+            if (
+              post.peopleJoined.includes(user.email) ||
+              post.creator === user.email
+            ) {
+              return (
+                <div>
+                  <p>{post.postTitle}</p>
+                  <p>Contribute:</p>
+                  <p>
+                    {"$" +
+                      (post.peopleJoined.length / post.minPeople) * post.cost}
+                  </p>
+                  <p>of</p>
+                  <p>{"$" + post.cost}</p>
+                  <p>{determineJoinElement(post)}</p>
+                </div>
+              );
+            }
+          })}
         </div>
       </div>
     );
