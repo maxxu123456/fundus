@@ -1,5 +1,6 @@
+import { Link } from "react-router-dom";
 import { useRef } from "react";
-import "./CreatePost.css";
+import styles from "./CreatePost.module.css";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
@@ -38,20 +39,43 @@ function CreatePost(props) {
 
   return (
     <div>
-      <input placeholder="Title/Item" type="text" ref={titleRef}></input>
-      <input placeholder="Cost" type="number" ref={costRef}></input>
-      <input
-        placeholder="Minimum Number of Participants"
-        type="number"
-        ref={minParticipantsRef}
-      ></input>
-      <input
-        placeholder="Link to item eg: Amazon..."
-        type="text"
-        ref={linkRef}
-      ></input>
-      <input placeholder="Description" type="text" ref={descriptionRef}></input>
-      <button onClick={onSubmit}>Create Post</button>
+      <h1 className={styles.title}>Create Post</h1>
+
+      <div className={styles.container}>
+
+        <div className={styles.left}>
+          <input className={styles.input} placeholder="Item" type="text" ref={titleRef}></input>
+          <input className={styles.input} placeholder="Cost ($)" type="number" ref={costRef}></input>
+          <input 
+            className={styles.input}
+            placeholder="# of min participants"
+            type="number"
+            ref={minParticipantsRef}
+          ></input>
+
+        </div>
+
+        <div className={styles.right}>
+          <input
+            className={styles.input}
+            placeholder="Item link"
+            type="text"
+            ref={linkRef}
+          ></input>
+          <textarea  
+            placeholder="Description" 
+            rows="4"
+            ref={descriptionRef}>
+            </textarea>
+          <div className={styles.buttons}>
+            <Link to="/dashboard">
+              <button className={styles.button2}>Cancel</button>
+            </Link>
+            <button className={styles.button} onClick={onSubmit}>Create</button>
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 }

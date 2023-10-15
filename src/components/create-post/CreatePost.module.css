@@ -1,0 +1,122 @@
+@font-face {
+    font-family: 'Avenir-Medium';
+    src: local('Avenir-Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Avenir-Black';
+    src: local('Avenir-Black.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Avenir-Heavy';
+    src: local('Avenir-Heavy.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Avenir-Light';
+    src: local('Avenir-Light.ttf') format('truetype');
+}
+
+.title {
+    font-family: Avenir-Heavy;
+    font-size: 36px;
+    margin-top: 100px;
+}
+
+.container {
+    background-color: #E9F0FE;
+    margin: 40px 22vw;
+    border: 1px solid #E9F0FE;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 40px 50px;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    width: 20vw;
+    padding-right: 11px;
+}
+
+.span {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+    width: 30vw;
+}
+
+.input {
+    border: 1px solid white;
+    border-radius: 10px;
+    margin-top: 11px;
+    height: 45px;
+}
+
+.days {
+    font-family: Avenir-Medium;
+    font-size: 18px;
+}
+
+::placeholder {
+    color: #777777;
+}
+input[type=text], input[type=number] {
+    font-family: Avenir-Light;
+    padding-left: 20px;
+    font-size: 18px;
+}
+
+textarea {
+    height: 67px;
+    resize: none;
+    padding: 20px;
+    font-family: Avenir-Light;
+    font-size: 18px;
+    border: 1px solid white;
+    border-radius: 10px;
+    margin-top: 11px;
+}
+
+.button {
+    margin-top: 40px;
+    height: 40px;
+    width: 120px;
+    background-color: #207DFA;
+    border: 1px solid #207DFA;
+    border-radius: 10px;
+    color: white;
+    font-family: Avenir-Heavy;
+    font-size: 18px;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: white;
+    color: #207DFA;
+    border: 1px solid #207DFA;
+}
+
+.button2 {
+    margin-top: 40px;
+    height: 40px;
+    width: 120px;
+    background-color: #e6e6e6;
+    border: 1px solid #e6e6e6;
+    border-radius: 10px;
+    color: #878787;
+    font-family: Avenir-Heavy;
+    font-size: 18px;
+    margin-right: 15px;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}

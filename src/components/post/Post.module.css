@@ -1,0 +1,78 @@
+@font-face {
+    font-family: 'Avenir-Medium';
+    src: local('Avenir-Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Avenir-Light';
+    src: local('Avenir-Light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Avenir-Black';
+    src: local('Avenir-Black.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Avenir-Roman';
+    src: local('Avenir-Roman.ttf') format('truetype');
+}
+
+.all {
+    display: flex;
+    flex-direction: row;
+    text-align: left;
+    margin: 70px 100px;
+}
+
+.topRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.blue {
+    width: 20px;
+    height: 20px;
+}
+
+.left {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.right {
+    display: flex;
+    flex-direction: column;
+}
+
+.cost {
+    display: flex;
+    flex-direction: row;
+}
+
+.big {
+    font-family: Avenir-Black;
+    font-size: 50px;
+}
+
+.little {
+    font-family: Avenir-Medium;
+    font-size: 35px;
+    color: #454545;
+}
+
+.joined {
+    font-family: Avenir-Roman;
+    font-size: 22px;
+    color: #454545;
+}
+
+.plink {
+    font-family: Avenir-Heavy;
+    font-size: 28px;
+}
+
+.link {
+    font-family: Avenir-Medium;
+    font-size: 22px;
+    color: #777777;
+}
