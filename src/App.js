@@ -10,6 +10,7 @@ import CreatePost from "./components/create-post/CreatePost";
 import Success from "./components/success/Success";
 import Browse from "./components/browse/Browse";
 import Join from "./components/join/Join";
+import PaymentSuccess from "./components/payment-success/PaymentSuccess";
 
 const router = createBrowserRouter([
   { path: "/", element: <LandingPage /> },
@@ -20,6 +21,7 @@ const router = createBrowserRouter([
   { path: "/success", element: <Success /> },
   { path: "/browse", element: <Browse /> },
   { path: "/join/:postId", element: <Join></Join> },
+  { path: "/payment-success", element: <PaymentSuccess></PaymentSuccess> },
 ]);
 function App() {
   let post1 = {
