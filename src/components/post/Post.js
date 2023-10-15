@@ -11,13 +11,17 @@ function Post(props) {
   let type = '';
 
   if (completed) {
-    joinElement = <p>Completed</p>;
+    joinElement = (
+        <button className={styles.buttona}>Completed</button>
+    );
   } else if (props.post.peopleJoined.includes(user.email)) {
-    joinElement = <p>Joined</p>;
+    joinElement = (
+      <button className={styles.buttonb}>Joined</button>
+  );
   } else {
     joinElement = (
       <Link to={"/join/" + props.post.postId}>
-        <button className={styles.button}>Join</button>
+        <button className={styles.buttonc + " " + styles.pointer}>Join</button>
       </Link>
     );
   }  

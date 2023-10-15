@@ -36,6 +36,9 @@
     font-family: Avenir-Medium;
     font-size: 32px;
 }
+.button:hover {
+    cursor: pointer;
+}
 
 .first {
     margin-bottom: 10px;

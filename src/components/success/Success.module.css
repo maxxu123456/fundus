@@ -55,6 +55,9 @@
     width: 60px;
     height: 60px;
 }
+.ex:hover {
+    cursor: pointer;
+}
 
 .under {
     margin-top: 15vh;

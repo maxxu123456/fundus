@@ -68,26 +68,41 @@
     margin: 0px;
 }
 
-.button {
+.buttona {
     border: 0px;
     border-radius: 15px;
     padding: 12px;
     font-family: Avenir-Light;
     font-size: 22px;
     width: 14vw;
-}
-
-.a {
     background-color: #828282;
     color: white;
 }
 
-.b {
+.buttonb {
+    border: 0px;
+    border-radius: 15px;
+    padding: 12px;
+    font-family: Avenir-Light;
+    font-size: 22px;
+    width: 14vw;
     background-color: #63CF63;
     color: white;
 }
 
-.c {
+.buttonc {
+    border: 0px;
+    border-radius: 15px;
+    padding: 12px;
+    font-family: Avenir-Light;
+    font-size: 22px;
+    width: 14vw;
     background-color: #EDF3FA;
     color: black;
+}
+
+
+
+.pointer:hover {
+    cursor: pointer;
 }

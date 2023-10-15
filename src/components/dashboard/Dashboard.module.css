@@ -157,3 +157,10 @@ img {
     color: #777777;
     width: 33%;
 }
+
+.create:hover {
+    cursor: pointer;
+}
+.browse:hover {
+    cursor: pointer;
+}

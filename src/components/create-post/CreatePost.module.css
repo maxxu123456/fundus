@@ -100,6 +100,7 @@ textarea {
     background-color: white;
     color: #207DFA;
     border: 1px solid #207DFA;
+    cursor: pointer;
 }
 
 .button2 {
@@ -113,6 +114,9 @@ textarea {
     font-family: Avenir-Heavy;
     font-size: 18px;
     margin-right: 15px;
+}
+.button2:hover {
+    cursor: pointer;
 }
 
 .buttons {

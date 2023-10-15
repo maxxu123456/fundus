@@ -39,6 +39,7 @@ h2 {
 .button:hover {
     background-color: #207DFA;
     color: white;
+    cursor: pointer;
 }
 
 ::placeholder {
