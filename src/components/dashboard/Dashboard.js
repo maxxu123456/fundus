@@ -95,16 +95,12 @@ function Dashboard(props) {
                 post.creator === user.email
               ) {
                 return (
-                  <div>
-                    <p>{post.postTitle}</p>
-                    <p>Contribute:</p>
-                    <p>
-                      {"$" +
-                        (post.peopleJoined.length / post.minPeople) * post.cost}
-                    </p>
-                    <p>of</p>
-                    <p>{"$" + post.cost}</p>
-                    <p>{determineJoinElement(post)}</p>
+                  <div className={styles.section}>
+                    <p className={styles.title}>{post.postTitle}</p>
+                    <div className={styles.middle}>
+                    <p>{"Pay: $" + (post.cost / post.minPeople) + " / " + "$" + post.cost}</p>
+                    </div>
+                    <p className={styles.right}>Joined</p>
                   </div>
                 );
               }

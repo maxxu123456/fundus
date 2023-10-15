@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./Join.css";
+import styles from "./Join.module.css";
 import { useNavigate, useParams } from "react-router-dom";
 import { collection, doc, getDoc, setDoc, updateDoc } from "firebase/firestore";
 import { db } from "../../firebase";
@@ -48,47 +48,56 @@ function Join(props) {
       const docSnap = await getDoc(docRef);
       if (docSnap.exists()) {
         setPost(docSnap.data());
-        console.log(docSnap.data());
+        console.log(docSnap.data()); 
       }
     }
     loadData();
   }, []);
   if (post.peopleJoined) {
     return (
-      <div>
-        <h1>{post.postTitle}</h1>
-        <h1>
-          {post.peopleJoined.length <= post.cost
-            ? "$" + (post.peopleJoined.length / post.minPeople) * post.cost
-            : "$" + post.cost}
-        </h1>
-        <h2>{"of $" + post.cost}</h2>
-        <h2>
-          {"Joined members: " + post.peopleJoined.length + "/" + post.minPeople}
-        </h2>
-        <p>Product Link: </p>
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href={"https://" + post.itemLink}
-        >
-          {post.itemLink}
-        </a>
-        <PayPalScriptProvider
-          options={{
-            clientId:
-              "ASut3Cttv65_rzvCTMI98Osx53Hkz_wkjBwMjEVeXT5IPf5bWb-ej3c3ap4RF5FALUgKRFLnN-MDVHKe",
-            currency: "USD",
-            intent: "capture",
-          }}
-        >
-          <PayPalButtons
-            style={{ color: "blue" }}
-            fundingSource="paypal"
-            createOrder={createOrder}
-            onApprove={onApprove}
-          ></PayPalButtons>
-        </PayPalScriptProvider>
+      <div className={styles.wholething}>
+        <div className={styles.left}>
+          <h1 className={styles.title}>{post.postTitle}</h1>
+          <div className={styles.pay}>
+            <h2 className={styles.leftPay}> {"Pay: $" + post.cost  / post.minPeople} </h2>
+            <h3 className={styles.rightPay}>{" / $" + post.cost}</h3> 
+          </div>
+          <h2 className={styles.j}>
+            {"Joined members: " + post.peopleJoined.length + "/" + post.minPeople}
+          </h2>
+          <h2 className={styles.t}>
+            {"Total raised: $" + post.cost*post.peopleJoined.length/post.minPeople + "/$" + post.cost}
+          </h2>
+          <p className={styles.link}>Product Link: </p>
+          <a
+            className={styles.linkl}
+            target="_blank"
+            rel="noopener noreferrer"
+            href={post.itemLink}
+          >
+            {post.itemLink}
+          </a>
+        </div>
+
+        <div className={styles.right}>
+          <p className={styles.desc}>{"Description: " + post.postDescription}</p>
+
+          <PayPalScriptProvider
+            options={{
+              clientId:
+                "ASut3Cttv65_rzvCTMI98Osx53Hkz_wkjBwMjEVeXT5IPf5bWb-ej3c3ap4RF5FALUgKRFLnN-MDVHKe",
+              currency: "USD",
+              intent: "capture",
+            }}
+          >
+            <PayPalButtons
+              style={{ color: "blue" }}
+              fundingSource="paypal"
+              createOrder={createOrder}
+              onApprove={onApprove}
+            ></PayPalButtons>
+          </PayPalScriptProvider>
+        </div>
       </div>
     );
   } else {

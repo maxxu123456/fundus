@@ -8,44 +8,36 @@ function Post(props) {
   user = JSON.parse(user);
   let joinElement;
   const completed = props.post.peopleJoined.length === props.post.minPeople;
+  let type = '';
 
   if (completed) {
     joinElement = <p>Completed</p>;
+    type = 'a';
   } else if (props.post.peopleJoined.includes(user.email)) {
     joinElement = <p>Joined</p>;
+    type = 'b';
   } else {
+    type = 'c';
     joinElement = (
       <Link to={"/join/" + props.post.postId}>
-        <button>Join</button>
+        <button className={styles.button}>Join</button>
       </Link>
     );
-  }
+  }  
 
   return (
-    <div>
-      <div className={styles.topRow}>
-        <p>{props.post.postTitle}</p>
-        <button className={styles.blue}><img src={blueButton}></img></button>
-      </div>
-      <div className={styles.all}>
-        <div className={styles.left}>
-          <div className={styles.cost}>
-            <p className={styles.big}>{"$" + props.post.cost}</p>
-            <p className={styles.little}>{" of $" + Math.round((props.post.cost/props.post.minPeople)*100) / 100}</p>
-          </div>
-
-          <p className={styles.joined}>{"Joined members: " + props.post.peopleJoined.length + "/" + props.post.minPeople}</p>
-          <p className={styles.plink}>Product link:</p>
-          <p>{props.post.itemLink}</p>
-        </div>
-
-        <div className={styles.right}>
-          <p>{props.post.postDescription}</p>
-          <button>Join</button>
+    <div className={styles.unit}>
+      <div className={styles.left}>
+        <p className={styles.title}>{props.post.postTitle}</p>
+        <div className={styles.hor}>
+          <p className={styles.bigger}>{"Contribute: $" + props.post.cost/props.post.minPeople + " "}</p>
+          <p className={styles.smaller}>{" / $" + props.post.cost}</p>
         </div>
       </div>
 
-      {joinElement}
+      <div className={styles.right + ' ' + styles.type}>
+        {joinElement}
+      </div>
     </div>
   );
 }

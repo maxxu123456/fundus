@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { db } from "../../firebase";
 import Post from "../post/Post";
-import "./Browse.css";
+import styles from  "./Browse.module.css";
 import { getDocs, collection } from "firebase/firestore";
 import { useEffect, useState } from "react";
 
@@ -21,14 +21,19 @@ function Browse() {
     loadData();
   }, []);
   return (
-    <div>
-      {posts.map((post) => {
-        return (
-          <div>
-            <Post key={post.postId} post={post} />
-          </div>
-        );
-      })}
+    <div className={styles.background}>
+
+      <h1 className={styles.browse}>Browse</h1>
+
+      <div>
+        {posts.map((post) => {
+          return (
+            <div>
+              <Post key={post.postId} post={post} />
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }
