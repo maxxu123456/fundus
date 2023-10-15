@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import "./Signup.css";
+import styles from "./Signup.module.css";
 import { collection, addDoc, setDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
@@ -31,28 +31,24 @@ function Signup(props) {
 
   return (
     <div>
+       <h2>Create your account</h2>
       <div>
-        <label>First Name: </label>
-        <input type="text" ref={firstNameRef}></input>
+        <input type="text" className={styles.input} placeholder="First Name" ref={firstNameRef}></input>
       </div>
       <div>
-        <label>Last Name: </label>
-        <input type="text" ref={lastNameRef}></input>
+        <input type="text" className={styles.input} placeholder="Last Name" ref={lastNameRef}></input>
       </div>
       <div>
-        <label>Location: </label>
-        <input type="text" ref={locationRef}></input>
+        <input type="text" className={styles.input} placeholder="Location" ref={locationRef}></input>
       </div>
       <div>
-        <label>Email: </label>
-        <input type="text" ref={emailRef}></input>
+        <input type="text" className={styles.input} placeholder="Email" ref={emailRef}></input>
       </div>
       <div>
-        <label>Create Password: </label>
-        <input type="text" ref={passwordRef}></input>
+        <input type="password" className={styles.input} placeholder="Password" ref={passwordRef}></input>
       </div>
 
-      <button onClick={onSubmit}>Create Account</button>
+      <button className={styles.button} onClick={onSubmit}>Create Account</button>
     </div>
   );
 }

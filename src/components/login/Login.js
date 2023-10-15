@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import "./Login.css";
+import styles from "./Login.module.css";
 import { collection, getDoc, doc } from "firebase/firestore";
 import { db } from "../../firebase";
 import { useNavigate } from "react-router-dom";
@@ -31,16 +31,15 @@ function Login() {
 
   return (
     <div>
+      <h1 className={styles.h1}>moneyPool</h1>
       <div>
-        <label>Email: </label>
-        <input type="text" ref={emailRef}></input>
+        <input type="text" className={styles.input} placeholder="Email" ref={emailRef}></input>
       </div>
       <div>
-        <label>Password: </label>
-        <input type="text" ref={passwordRef}></input>
+        <input type="password" className={styles.input} placeholder="Password" ref={passwordRef}></input>
       </div>
 
-      <button onClick={onSubmit}>Log in</button>
+      <button className={styles.button} onClick={onSubmit}>Log in</button>
     </div>
   );
 }
