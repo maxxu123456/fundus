@@ -12,12 +12,9 @@ function Post(props) {
 
   if (completed) {
     joinElement = <p>Completed</p>;
-    type = 'a';
   } else if (props.post.peopleJoined.includes(user.email)) {
     joinElement = <p>Joined</p>;
-    type = 'b';
   } else {
-    type = 'c';
     joinElement = (
       <Link to={"/join/" + props.post.postId}>
         <button className={styles.button}>Join</button>
@@ -35,7 +32,7 @@ function Post(props) {
         </div>
       </div>
 
-      <div className={styles.right + ' ' + styles.type}>
+      <div className={styles.right}>
         {joinElement}
       </div>
     </div>

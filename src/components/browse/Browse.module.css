@@ -26,6 +26,6 @@
 .background {
     background-color: #207DFA;
     height: 100%;
-    margin: 0px;
     width: 100vw;
+    overflow: hidden;
 }
