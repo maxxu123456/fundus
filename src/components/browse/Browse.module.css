@@ -25,7 +25,7 @@
 
 .background {
     background-color: #207DFA;
-    height: 100vh;
+    height: 100%;
     width: 100vw;
     overflow: hidden;
 }
